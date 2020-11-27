@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController2D _controller;
     private Animator _animator;
     private Rigidbody2D _rigidbody;
+    private PlayerHealth _healthController;
     private float _horizontalMove;
     private bool _jump = false;
 
@@ -17,28 +18,42 @@ public class PlayerMovement : MonoBehaviour
         _animator = GetComponent<Animator>();
         _controller = GetComponent<CharacterController2D>();
         _rigidbody = GetComponent<Rigidbody2D>();
+        _healthController = GetComponent<PlayerHealth>();
     }
 
     private void Update()
     {
         GetInput();
+        
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        SetAnimatorValues();
-        _controller.Move(_horizontalMove * Time.fixedDeltaTime,false, _jump);
-        _jump = false;
-    }
+        if (!_healthController.isDead)
+        {
+            SetAnimatorValues();
+        }
+
+        _controller.Move(_horizontalMove * Time.fixedDeltaTime, false, _jump);
+            _jump = false;
+        }
 
     void GetInput()
     {
-        _horizontalMove = Input.GetAxisRaw("Horizontal") * movementSpeed;
-
-        if (Input.GetButtonDown("Jump"))
+        if (!_healthController.isDead)
         {
-            _jump = true;
+            _horizontalMove = Input.GetAxisRaw("Horizontal") * movementSpeed;
+
+            if (Input.GetButtonDown("Jump"))
+            {
+                _jump = true;
+            }
+        }
+        else
+        {
+            _horizontalMove = 0;
+            _jump = false;
         }
     }
 
