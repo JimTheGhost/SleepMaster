@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6162622387477329078}
   - component: {fileID: 6162622387477329077}
   - component: {fileID: 6162622387477329076}
+  - component: {fileID: 3592481633290525187}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -119,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 186c0ed586db57648a27523c45b7675f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 300
+  m_JumpForce: 480
   m_CrouchSpeed: 0.36
   m_MovementSmoothing: 0.05
   m_AirControl: 1
@@ -129,6 +130,9 @@ MonoBehaviour:
   m_GroundCheck: {fileID: 6162622387925597538}
   m_CeilingCheck: {fileID: 6162622387818195843}
   m_CrouchDisableCollider: {fileID: 0}
+  canMultiJump: 1
+  maxExtraJumps: 1
+  doubleJumpModifier: 0.844
   OnLandEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -157,7 +161,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 6162622387477329072}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 3fc837cd85339dd4c81f3bd06e464d2b, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -195,6 +199,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &3592481633290525187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6162622387477329072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92cc43ae1652b9e4585b3b353a10ad42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+  currentHealth: 0
+  isDead: 0
 --- !u!1 &6162622387818195842
 GameObject:
   m_ObjectHideFlags: 0
