@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private float _horizontalMove;
     private bool _jump = false;
+    private bool _canJump = true;
 
     [SerializeField] private float movementSpeed;
     void Start()
@@ -36,9 +37,10 @@ public class PlayerMovement : MonoBehaviour
     {
         _horizontalMove = Input.GetAxisRaw("Horizontal") * movementSpeed;
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && _canJump)
         {
             _jump = true;
+            _canJump = false;
         }
     }
 
@@ -52,5 +54,10 @@ public class PlayerMovement : MonoBehaviour
     private bool IsFalling()
     {
         return _rigidbody.velocity.y < -0.1;
+    }
+
+    private void ResetJump()
+    {
+        _canJump = true;
     }
 }
