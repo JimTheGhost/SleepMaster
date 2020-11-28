@@ -678,6 +678,7 @@ GameObject:
   - component: {fileID: 394875818}
   - component: {fileID: 394875820}
   - component: {fileID: 394875819}
+  - component: {fileID: 394875821}
   m_Layer: 0
   m_Name: ModernLV3_WalkingTiles
   m_TagString: Untagged
@@ -1448,6 +1449,22 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!19719996 &394875821
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394875817}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0.00001
 --- !u!1 &618858737
 GameObject:
   m_ObjectHideFlags: 0
@@ -5084,6 +5101,7 @@ GameObject:
   - component: {fileID: 1877852850}
   - component: {fileID: 1877852852}
   - component: {fileID: 1877852851}
+  - component: {fileID: 1877852853}
   m_Layer: 0
   m_Name: ModernLV3_ComfyDamage
   m_TagString: Untagged
@@ -5291,6 +5309,22 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!19719996 &1877852853
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1877852849}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0.00001
 --- !u!1 &2131246310
 GameObject:
   m_ObjectHideFlags: 0
