@@ -6,20 +6,36 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private int maxHealth;
-    [Range(0, 1)] [SerializeField] public float tickRate;
+    [Range(0, 1)] [SerializeField] private float tickRate;
     [HideInInspector] public int currentHealth;
     [SerializeField] public int lives;
 
     [HideInInspector] public bool isDead = false;
 
+    public float TickRate
+    {
+        get => tickRate;
+        private set => tickRate = value;
+    }
+
     public delegate void DeathHandler();
 
+    public delegate void SpawnHandler();
+
     public event DeathHandler OnDeath;
+    public event SpawnHandler SpawnComplete;
+    
 
     private void Start()
     {
-        currentHealth = maxHealth;
+        ResetHealth();
         StartCoroutine(DamageTick());
+        SpawnComplete?.Invoke();
+    }
+
+    public void ResetHealth()
+    {
+        currentHealth = maxHealth;
     }
 
     IEnumerator DamageTick()
