@@ -13,6 +13,7 @@ public class Consumable : MonoBehaviour
         if (target != null)
         {
             target.ApplyHealing(healValue); 
-        }
-}
+            Destroy(gameObject);
+        } 
+    }
 }
