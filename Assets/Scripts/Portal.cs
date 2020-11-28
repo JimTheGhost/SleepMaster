@@ -21,7 +21,7 @@ public class Portal : MonoBehaviour
         {
             linkedPortal._portalActive = false;
             other.transform.position = linkedPortal.transform.position;
-            linkedPortal.StartCoroutine(ReactivatePortal());
+            linkedPortal.StartCoroutine(linkedPortal.ReactivatePortal());
         }
     }
 }
