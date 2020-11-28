@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6452127726622825204}
   - component: {fileID: 903693020321525048}
   - component: {fileID: 1998223142644739621}
+  - component: {fileID: 4660600393220097067}
   m_Layer: 0
   m_Name: coffee_cup_green
   m_TagString: Untagged
@@ -108,3 +109,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6361766, y: 0.63979447}
   m_EdgeRadius: 0
+--- !u!114 &4660600393220097067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3185416276397606853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8ce10281aa766d4181ff6aa731ed423, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healValue: 5

@@ -43,3 +43,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Traps
+    uniqueID: 2578535989
+    locked: 0

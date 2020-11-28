@@ -38,6 +38,12 @@ public class GameManager : MonoBehaviour
     {
         var player = Instantiate(playerPrefab, _spawnLocation.transform.position, Quaternion.identity);
         _player = player.GetComponent<PlayerHealth>();
+        _player.OnDeath += PlayerOnDeath;
+        _player.SpawnComplete += PlayerOnSpawnComplete;
+    }
+
+    private void PlayerOnSpawnComplete()
+    {
         if (_playerProperties == null)
         {
             _playerProperties = new PlayerProperties(_player.currentHealth, _player.lives);
@@ -47,12 +53,36 @@ public class GameManager : MonoBehaviour
             _player.currentHealth = _playerProperties.playerHealth;
             _player.lives = _playerProperties.playerLives;
         }
-        _player.OnDeath += PlayerOnDeath;
+    }
+
+    private void SetPlayerProperties()
+    {
+        if (_playerProperties != null)
+        {
+            _playerProperties.playerHealth = _player.currentHealth;
+            _playerProperties.playerLives = _player.lives;
+        }
     }
 
     private void PlayerOnDeath()
     {
-        throw new NotImplementedException();
+        if (_player.lives > 0)
+        {
+            RevivePlayer();
+        }
+        else
+        {
+            Time.timeScale = 0;
+            Debug.Log("Ya Dead Kid");
+        }
+    }
+
+    private void RevivePlayer()
+    {
+        _player.gameObject.transform.position = _spawnLocation.transform.position;
+        _player.lives--;
+        _player.ResetHealth();
+        _player.isDead = false;
     }
 
     private void NewLevel()
@@ -68,6 +98,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadNextLevel()
     {
+        SetPlayerProperties();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         SceneManager.sceneLoaded += SceneLoaded;
     }
