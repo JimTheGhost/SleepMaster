@@ -10,8 +10,10 @@ public class Portal : MonoBehaviour
 
     public IEnumerator ReactivatePortal()
     {
+        Debug.Log(name + " Waiting to Reactivate");
         yield return new WaitForSeconds(0.4f);
         _portalActive = true;
+        Debug.Log(name + " Reactivated");
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
