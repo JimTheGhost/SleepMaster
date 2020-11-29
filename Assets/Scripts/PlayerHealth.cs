@@ -66,6 +66,12 @@ public class PlayerHealth : MonoBehaviour
             TakeDamage(trapDamage);
             AudioManager.Instance.PlaySoundEffect(trapDamageSfx);
         }
+
+        if (other.gameObject.CompareTag("NightmareFuel"))
+        {
+            lives++;
+            Destroy(other.gameObject);
+        }
     }
 
     public void TakeDamage(int damageAmount)

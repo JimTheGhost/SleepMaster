@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     private PlayerProperties _playerProperties;
     private PlayerHealth _player;
     private Transform _spawnLocation;
+    private GameObject _nightmareLevel;
     [SerializeField]private GameObject playerPrefab;
 
     public UIHandler uiHandler;
@@ -113,6 +114,7 @@ public class GameManager : MonoBehaviour
             SpawnPlayer();
         }
         uiHandler.FindPlayerHud();
+        _nightmareLevel = GameObject.FindWithTag("Nightmare");
 
     }
 
