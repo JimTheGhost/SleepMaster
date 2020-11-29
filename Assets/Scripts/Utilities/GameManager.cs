@@ -44,6 +44,11 @@ public class GameManager : MonoBehaviour
         {
             uiHandler.SetHealth(_player.healthPercent);
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     private void SpawnPlayer()
