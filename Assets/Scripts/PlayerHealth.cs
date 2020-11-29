@@ -17,7 +17,7 @@ public class PlayerHealth : MonoBehaviour
 
     [HideInInspector] public bool isDead = false;
 
-    public float healthPercent => (float)currentHealth / maxHealth;
+    public float healthPercent;
 
     public float TickRate
     {
@@ -66,7 +66,7 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {
         currentHealth = Mathf.Clamp(currentHealth - damageAmount, 0, maxHealth);
-        Debug.Log(currentHealth);
+        healthPercent = (float) currentHealth / maxHealth;
         if (currentHealth <= 0)
         {
             isDead = true;
@@ -79,8 +79,7 @@ public class PlayerHealth : MonoBehaviour
         if (!isDead)
         {
             currentHealth = Mathf.Clamp(currentHealth + healAmount, 0, maxHealth);
-            Debug.Log(currentHealth);
-            
+            healthPercent = (float) currentHealth / maxHealth;
         }
     }
 

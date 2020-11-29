@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
     {
         if (_player != null)
         {
+            Debug.Log(_player.healthPercent);
             uiHandler.SetHealth(_player.healthPercent);
         }
     }
@@ -105,6 +106,7 @@ public class GameManager : MonoBehaviour
         {
             SpawnPlayer();
         }
+        uiHandler.FindPlayerHud();
 
     }
 
@@ -132,6 +134,7 @@ public class GameManager : MonoBehaviour
     {
         if (scene.buildIndex != 0)
         {
+            _player = null;
             NewLevel();
         }
     }
