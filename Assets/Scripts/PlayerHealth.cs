@@ -6,12 +6,18 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private int maxHealth;
-    [Range(0, 1)] [SerializeField] private float tickRate;
     [HideInInspector] public int currentHealth;
     [SerializeField] public int lives;
-    [SerializeField] public int trapDamage = 10;
+    
+    [Range(0, 1)] [SerializeField] private float tickRate;
+    [SerializeField]private int baseTickDamage = 1;
+    [HideInInspector] public int tickDamage;
+
+    [SerializeField] private int trapDamage = 10;
 
     [HideInInspector] public bool isDead = false;
+
+    public float healthPercent => (float)currentHealth / maxHealth;
 
     public float TickRate
     {
@@ -32,6 +38,7 @@ public class PlayerHealth : MonoBehaviour
         ResetHealth();
         StartCoroutine(DamageTick());
         SpawnComplete?.Invoke();
+        ResetTick();
     }
 
     public void ResetHealth()
@@ -73,7 +80,13 @@ public class PlayerHealth : MonoBehaviour
         {
             currentHealth = Mathf.Clamp(currentHealth + healAmount, 0, maxHealth);
             Debug.Log(currentHealth);
+            
         }
+    }
+
+    public void ResetTick()
+    {
+        tickDamage = baseTickDamage;
     }
 
     protected virtual void Sleep()

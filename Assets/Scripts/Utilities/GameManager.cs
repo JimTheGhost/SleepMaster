@@ -34,6 +34,14 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
+    private void Update()
+    {
+        if (_player != null)
+        {
+            uiHandler.SetHealth(_player.healthPercent);
+        }
+    }
+
     private void SpawnPlayer()
     {
         var player = Instantiate(playerPrefab, _spawnLocation.transform.position, Quaternion.identity);
@@ -93,6 +101,7 @@ public class GameManager : MonoBehaviour
         {
             SpawnPlayer();
         }
+        uiHandler.SetPlayerHudVisibility(true);
         
     }
 
