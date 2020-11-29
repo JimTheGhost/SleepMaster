@@ -6,6 +6,7 @@ using UnityEngine;
 public class Consumable : MonoBehaviour
 {
     [SerializeField] private int healValue = 5;
+    [SerializeField] private AudioClip healSfx;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -13,6 +14,7 @@ public class Consumable : MonoBehaviour
         if (target != null)
         {
             target.ApplyHealing(healValue); 
+            AudioManager.Instance.PlaySoundEffect(healSfx);
             Destroy(gameObject);
         } 
     }

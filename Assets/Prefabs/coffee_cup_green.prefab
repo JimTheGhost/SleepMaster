@@ -122,3 +122,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healValue: 15
+  healSfx: {fileID: 8300000, guid: 45e2fdbcc681fe5498cb5f81188b36ff, type: 3}

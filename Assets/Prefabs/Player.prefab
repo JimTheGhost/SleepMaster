@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6abb6f66fc725c947bb226031af0a0c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpSfx: {fileID: 8300000, guid: 8e9e668c797f54242be49701d3cf1f1f, type: 3}
   movementSpeed: 20
 --- !u!61 &6162622387477329077
 BoxCollider2D:
@@ -219,7 +220,11 @@ MonoBehaviour:
   baseTickDamage: 1
   tickDamage: 0
   trapDamage: 10
+  damageSfx: {fileID: 8300000, guid: 73fe6a72206edb847be9bc912d96b5b1, type: 3}
+  trapDamageSfx: {fileID: 8300000, guid: 2cbd13ea125f3874a876b571b5587d14, type: 3}
+  deathSfx: {fileID: 8300000, guid: 3d8f9272b0c5f7442a47abd00665b8f4, type: 3}
   isDead: 0
+  healthPercent: 0
 --- !u!58 &1647573486096818704
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -24,22 +24,24 @@ public class GameManager : MonoBehaviour
     private PlayerProperties _playerProperties;
     private PlayerHealth _player;
     private Transform _spawnLocation;
+    private GameObject _nightmareLevel;
     [SerializeField]private GameObject playerPrefab;
 
     public UIHandler uiHandler;
+    public AudioManager audioManager;
 
     private void Awake()
     {
         _instance = this;
         DontDestroyOnLoad(this);
         SceneManager.sceneLoaded += SceneLoaded;
+        audioManager = AudioManager.Instance;
     }
 
     private void Update()
     {
         if (_player != null)
         {
-            Debug.Log(_player.healthPercent);
             uiHandler.SetHealth(_player.healthPercent);
         }
     }
@@ -77,14 +79,18 @@ public class GameManager : MonoBehaviour
 
     private void PlayerOnDeath()
     {
+        StartCoroutine(HandleRevive());
+    }
+
+    private IEnumerator HandleRevive()
+    {
+        yield return new WaitForSeconds(2);
         if (_player.lives > 0)
         {
             RevivePlayer();
         }
         else
         {
-            Time.timeScale = 0;
-            Debug.Log("Ya Dead Kid");
             LoadMainMenu();
         }
     }
@@ -96,6 +102,7 @@ public class GameManager : MonoBehaviour
         _player.ResetHealth();
         _player.isDead = false;
         uiHandler.SetPlayerHudVisibility(true);
+        _player.StartCoroutine(_player.DamageTick());
     }
 
     private void NewLevel()
@@ -107,6 +114,7 @@ public class GameManager : MonoBehaviour
             SpawnPlayer();
         }
         uiHandler.FindPlayerHud();
+        _nightmareLevel = GameObject.FindWithTag("Nightmare");
 
     }
 

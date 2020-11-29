@@ -7,6 +7,7 @@ public class UIHandler : MonoBehaviour
 {
     private MainMenu _mainMenu;
     private PlayerHUD _playerHUD;
+    public AudioClip testSound;
     private void Awake()
     {
         DontDestroyOnLoad(this);
@@ -40,4 +41,15 @@ public class UIHandler : MonoBehaviour
         }
 
     }
+    
+    public void ChangeSfxVolume(Single newVolume)
+    {
+        AudioManager.Instance.ChangeSfxVolume(newVolume);
+    }
+    
+    public void SetVolume(Single newVolume)
+    {
+        AudioManager.Instance.audioSource.volume = newVolume;
+    }
+    
 }
