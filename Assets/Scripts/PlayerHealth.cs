@@ -83,9 +83,7 @@ public class PlayerHealth : MonoBehaviour
             isDead = true;
             AudioManager.Instance.PlaySoundEffect(deathSfx);
             Sleep();
-            return;
         }
-        AudioManager.Instance.PlaySoundEffect(damageSfx);
     }
 
     public void ApplyHealing(int healAmount)
