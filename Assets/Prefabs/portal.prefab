@@ -121,3 +121,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc25b0ddac036fa4aa3ddddfbf7a6529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  linkedPortal: {fileID: 0}
+  portalSfx: {fileID: 8300000, guid: b9f3f5894deb9c747a83f6bdee92eae2, type: 3}

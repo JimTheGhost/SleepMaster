@@ -7,6 +7,7 @@ public class Portal : MonoBehaviour
 {
     [SerializeField] private Portal linkedPortal;
     private bool _portalActive = true;
+    [SerializeField] private AudioClip portalSfx;
 
     public IEnumerator ReactivatePortal()
     {
@@ -22,6 +23,7 @@ public class Portal : MonoBehaviour
             linkedPortal._portalActive = false;
             other.transform.position = linkedPortal.transform.position;
             linkedPortal.StartCoroutine(linkedPortal.ReactivatePortal());
+            AudioManager.Instance.PlaySoundEffect(portalSfx);
         }
     }
 }

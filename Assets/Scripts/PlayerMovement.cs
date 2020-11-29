@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     private float _horizontalMove;
     private bool _jump = false;
 
+    [SerializeField] private AudioClip jumpSfx;
+
     [SerializeField] private float movementSpeed;
     void Start()
     {
@@ -48,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetButtonDown("Jump"))
             {
                 _jump = true;
+                AudioManager.Instance.PlaySoundEffect(jumpSfx);
             }
         }
         else

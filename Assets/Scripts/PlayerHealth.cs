@@ -14,6 +14,7 @@ public class PlayerHealth : MonoBehaviour
     [HideInInspector] public int tickDamage;
 
     [SerializeField] private int trapDamage = 10;
+    [SerializeField] private AudioClip damageSfx;
 
     [HideInInspector] public bool isDead = false;
 
@@ -67,6 +68,7 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth = Mathf.Clamp(currentHealth - damageAmount, 0, maxHealth);
         healthPercent = (float) currentHealth / maxHealth;
+        AudioManager.Instance.PlaySoundEffect(damageSfx);
         if (currentHealth <= 0)
         {
             isDead = true;
