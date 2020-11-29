@@ -9,6 +9,7 @@ public class PlayerHealth : MonoBehaviour
     [Range(0, 1)] [SerializeField] private float tickRate;
     [HideInInspector] public int currentHealth;
     [SerializeField] public int lives;
+    [SerializeField] public int trapDamage = 10;
 
     [HideInInspector] public bool isDead = false;
 
@@ -51,7 +52,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Trap"))
         {
-            TakeDamage(5);
+            TakeDamage(trapDamage);
         }
     }
 
