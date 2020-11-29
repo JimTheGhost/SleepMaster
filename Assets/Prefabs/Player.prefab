@@ -213,9 +213,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  tickRate: 0.447
   currentHealth: 0
   lives: 2
+  tickRate: 0.447
+  baseTickDamage: 1
+  tickDamage: 0
+  trapDamage: 10
   isDead: 0
 --- !u!58 &1647573486096818704
 CircleCollider2D:
