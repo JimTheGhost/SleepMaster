@@ -95,8 +95,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    IEnumerator NightmarePopUp()
+    private IEnumerator NightmarePopUp()
     {
+        if (_nightmareLevel == null) yield break;
         _nightmareLevel.SetActive(true);
         yield return new WaitForSeconds(1.5f);
         _nightmareLevel.SetActive(false);
@@ -115,9 +116,13 @@ public class GameManager : MonoBehaviour
     }
 
     private void NewLevel()
-    {          
+    {
         _nightmareLevel = GameObject.FindWithTag("Nightmare");
-        _nightmareLevel.SetActive(false);
+        if (_nightmareLevel != null)
+        {
+            _nightmareLevel.SetActive(false);
+        }
+
         _spawnLocation = GameObject.FindWithTag("Spawn").transform;
         _player = FindObjectOfType<PlayerHealth>();
         if(_player == null)
