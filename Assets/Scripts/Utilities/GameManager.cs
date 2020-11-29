@@ -44,6 +44,11 @@ public class GameManager : MonoBehaviour
         {
             uiHandler.SetHealth(_player.healthPercent);
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     private void SpawnPlayer()
@@ -95,18 +100,34 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private IEnumerator NightmarePopUp()
+    {
+        if (_nightmareLevel == null) yield break;
+        _nightmareLevel.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        _nightmareLevel.SetActive(false);
+    }
+
     private void RevivePlayer()
     {
         _player.gameObject.transform.position = _spawnLocation.transform.position;
         _player.lives--;
         _player.ResetHealth();
         _player.isDead = false;
+        StartCoroutine(NightmarePopUp());
         uiHandler.SetPlayerHudVisibility(true);
         _player.StartCoroutine(_player.DamageTick());
+
     }
 
     private void NewLevel()
-    {        
+    {
+        _nightmareLevel = GameObject.FindWithTag("Nightmare");
+        if (_nightmareLevel != null)
+        {
+            _nightmareLevel.SetActive(false);
+        }
+
         _spawnLocation = GameObject.FindWithTag("Spawn").transform;
         _player = FindObjectOfType<PlayerHealth>();
         if(_player == null)
@@ -114,7 +135,7 @@ public class GameManager : MonoBehaviour
             SpawnPlayer();
         }
         uiHandler.FindPlayerHud();
-        _nightmareLevel = GameObject.FindWithTag("Nightmare");
+ 
 
     }
 
