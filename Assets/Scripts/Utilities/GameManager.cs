@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
         _player = player.GetComponent<PlayerHealth>();
         _player.OnDeath += PlayerOnDeath;
         _player.SpawnComplete += PlayerOnSpawnComplete;
+        uiHandler.SetPlayerHudVisibility(true);
     }
 
     private void PlayerOnSpawnComplete()
