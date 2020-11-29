@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     {
         _instance = this;
         DontDestroyOnLoad(this);
+        SceneManager.sceneLoaded += SceneLoaded;
     }
 
     private void Update()
@@ -82,6 +83,7 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 0;
             Debug.Log("Ya Dead Kid");
+            LoadMainMenu();
         }
     }
 
@@ -91,6 +93,7 @@ public class GameManager : MonoBehaviour
         _player.lives--;
         _player.ResetHealth();
         _player.isDead = false;
+        uiHandler.SetPlayerHudVisibility(true);
     }
 
     private void NewLevel()
@@ -101,19 +104,34 @@ public class GameManager : MonoBehaviour
         {
             SpawnPlayer();
         }
-        uiHandler.SetPlayerHudVisibility(true);
-        
+
     }
 
     public void LoadNextLevel()
     {
-        SetPlayerProperties();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        SceneManager.sceneLoaded += SceneLoaded;
+        if (SceneManager.GetActiveScene().buildIndex < SceneManager.sceneCountInBuildSettings - 1)
+        {
+            SetPlayerProperties();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        else
+        {
+            LoadMainMenu();
+        }
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene(0);
+        uiHandler.SetPlayerHudVisibility(false);
+        uiHandler.SetMainMenuVisibility(true);
     }
 
     private void SceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        NewLevel();
+        if (scene.buildIndex != 0)
+        {
+            NewLevel();
+        }
     }
 }
