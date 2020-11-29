@@ -155,6 +155,7 @@ public class GameManager : MonoBehaviour
     public void LoadMainMenu()
     {
         SceneManager.LoadScene(0);
+        _playerProperties = null;
         uiHandler.SetPlayerHudVisibility(false);
         uiHandler.SetMainMenuVisibility(true);
     }
