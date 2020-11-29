@@ -12,8 +12,12 @@ public class UIHandler : MonoBehaviour
         DontDestroyOnLoad(this);
         GameManager.Instance.uiHandler = this;
         _mainMenu = FindObjectOfType<MainMenu>();
-        _playerHUD = FindObjectOfType<PlayerHUD>();
         SetPlayerHudVisibility(false);
+    }
+
+    public void FindPlayerHud()
+    {
+        _playerHUD = FindObjectOfType<PlayerHUD>();
     }
 
     public void SetMainMenuVisibility(bool visibility)
@@ -23,10 +27,17 @@ public class UIHandler : MonoBehaviour
 
     public void SetPlayerHudVisibility(bool visibility)
     {
-        _playerHUD.gameObject.SetActive(visibility);
+        if (_playerHUD != null)
+        {
+            _playerHUD.gameObject.SetActive(visibility);
+        }
     }
     public void SetHealth(float healthPercent)
     {
-        _playerHUD.SetHealth(healthPercent);
+        if (_playerHUD != null)
+        {
+            _playerHUD.SetHealth(healthPercent);
+        }
+
     }
 }
