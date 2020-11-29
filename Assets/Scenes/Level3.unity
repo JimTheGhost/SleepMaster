@@ -209,24 +209,6 @@ Tilemap:
   m_GameObject: {fileID: 147627672}
   m_Enabled: 1
   m_Tiles:
-  - first: {x: -6, y: -7, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 1
-      m_TileSpriteIndex: 1
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      m_AllTileFlags: 1073741825
-  - first: {x: -5, y: -7, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      m_AllTileFlags: 1073741825
   - first: {x: -9, y: -6, z: 0}
     second:
       serializedVersion: 2
@@ -400,10 +382,10 @@ Tilemap:
       m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: 1cf74afaed38c8b469ddd37b5e2fcc4c, type: 2}
-  - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: 0228201f1e5114f429b65c16dd6e62b3, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 4
     m_Data: {fileID: 11400000, guid: df5c51fd063b6584babb60787ab2e297, type: 2}
   - m_RefCount: 4
@@ -415,12 +397,10 @@ Tilemap:
   - m_RefCount: 4
     m_Data: {fileID: 11400000, guid: 86a6157f06118d144938c0ec7a2aeac8, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 1
-    m_Data: {fileID: 7410768001681589282, guid: 8622ebd268ec88942af8d24b3fbb5189,
-      type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -8284083420612974141, guid: 8622ebd268ec88942af8d24b3fbb5189,
-      type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 4
     m_Data: {fileID: 412695910966483349, guid: e9bb31dea0004a04b9915bf7dbcac499, type: 3}
   - m_RefCount: 4
@@ -436,7 +416,7 @@ Tilemap:
     m_Data: {fileID: 2934263716686654959, guid: e9bb31dea0004a04b9915bf7dbcac499,
       type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 21
+  - m_RefCount: 19
     m_Data:
       e00: 1
       e01: 0
@@ -455,7 +435,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 21
+  - m_RefCount: 19
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -5173,7 +5153,7 @@ GameObject:
   - component: {fileID: 1091522807}
   m_Layer: 0
   m_Name: Sewer_Grid_Level3
-  m_TagString: Untagged
+  m_TagString: Nightmare
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6428,7 +6408,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileSpriteIndex: 6
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -8833,9 +8813,8 @@ Tilemap:
   - m_RefCount: 149
     m_Data: {fileID: 7410768001681589282, guid: 8622ebd268ec88942af8d24b3fbb5189,
       type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 1397963483284258322, guid: 8622ebd268ec88942af8d24b3fbb5189,
-      type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 3639805211165958039, guid: 8622ebd268ec88942af8d24b3fbb5189,
       type: 3}
@@ -8845,8 +8824,9 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: -2277505838047883500, guid: 8622ebd268ec88942af8d24b3fbb5189,
       type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 1397963483284258322, guid: 8622ebd268ec88942af8d24b3fbb5189,
+      type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 6190748478251780859, guid: 8622ebd268ec88942af8d24b3fbb5189,
       type: 3}
