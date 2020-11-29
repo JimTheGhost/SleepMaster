@@ -221,6 +221,8 @@ MonoBehaviour:
   tickDamage: 0
   trapDamage: 10
   damageSfx: {fileID: 8300000, guid: 73fe6a72206edb847be9bc912d96b5b1, type: 3}
+  trapDamageSfx: {fileID: 8300000, guid: 2cbd13ea125f3874a876b571b5587d14, type: 3}
+  deathSfx: {fileID: 8300000, guid: 3d8f9272b0c5f7442a47abd00665b8f4, type: 3}
   isDead: 0
   healthPercent: 0
 --- !u!58 &1647573486096818704

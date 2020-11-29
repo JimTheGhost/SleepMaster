@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
@@ -11,10 +12,12 @@ public class PlayerHealth : MonoBehaviour
     
     [Range(0, 1)] [SerializeField] private float tickRate;
     [SerializeField]private int baseTickDamage = 1;
-    [HideInInspector] public int tickDamage;
+    [HideInInspector] public int tickDamage = 1;
 
     [SerializeField] private int trapDamage = 10;
     [SerializeField] private AudioClip damageSfx;
+    [SerializeField] private AudioClip trapDamageSfx;
+    [SerializeField] private AudioClip deathSfx;
 
     [HideInInspector] public bool isDead = false;
 
@@ -52,7 +55,7 @@ public class PlayerHealth : MonoBehaviour
         while (!isDead)
         {
             yield return new WaitForSeconds(tickRate);
-            TakeDamage(1);
+            TakeDamage(tickDamage);
         }
     }
 
@@ -61,6 +64,7 @@ public class PlayerHealth : MonoBehaviour
         if (other.gameObject.CompareTag("Trap"))
         {
             TakeDamage(trapDamage);
+            AudioManager.Instance.PlaySoundEffect(trapDamageSfx);
         }
     }
 
@@ -68,12 +72,14 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth = Mathf.Clamp(currentHealth - damageAmount, 0, maxHealth);
         healthPercent = (float) currentHealth / maxHealth;
-        AudioManager.Instance.PlaySoundEffect(damageSfx);
         if (currentHealth <= 0)
         {
             isDead = true;
+            AudioManager.Instance.PlaySoundEffect(deathSfx);
             Sleep();
+            return;
         }
+        AudioManager.Instance.PlaySoundEffect(damageSfx);
     }
 
     public void ApplyHealing(int healAmount)

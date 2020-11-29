@@ -41,7 +41,6 @@ public class GameManager : MonoBehaviour
     {
         if (_player != null)
         {
-            Debug.Log(_player.healthPercent);
             uiHandler.SetHealth(_player.healthPercent);
         }
     }
