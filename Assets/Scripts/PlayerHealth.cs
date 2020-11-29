@@ -50,7 +50,7 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    IEnumerator DamageTick()
+    public IEnumerator DamageTick()
     {
         while (!isDead)
         {

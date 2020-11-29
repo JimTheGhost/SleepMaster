@@ -78,14 +78,18 @@ public class GameManager : MonoBehaviour
 
     private void PlayerOnDeath()
     {
+        StartCoroutine(HandleRevive());
+    }
+
+    private IEnumerator HandleRevive()
+    {
+        yield return new WaitForSeconds(2);
         if (_player.lives > 0)
         {
             RevivePlayer();
         }
         else
         {
-            Time.timeScale = 0;
-            Debug.Log("Ya Dead Kid");
             LoadMainMenu();
         }
     }
@@ -97,6 +101,7 @@ public class GameManager : MonoBehaviour
         _player.ResetHealth();
         _player.isDead = false;
         uiHandler.SetPlayerHudVisibility(true);
+        _player.StartCoroutine(_player.DamageTick());
     }
 
     private void NewLevel()

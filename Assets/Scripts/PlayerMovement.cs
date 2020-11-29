@@ -32,14 +32,10 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!_healthController.isDead)
-        {
-            SetAnimatorValues();
-        }
-
+        SetAnimatorValues();
         _controller.Move(_horizontalMove * Time.fixedDeltaTime, false, _jump);
-            _jump = false;
-        }
+        _jump = false;
+    }
 
     void GetInput()
     {
@@ -62,17 +58,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void SetAnimatorValues()
     {
-        _animator.SetFloat("Speed", Mathf.Abs(_horizontalMove));
-        _animator.SetBool("IsJumping",_jump);
-        _animator.SetBool("IsFalling", IsFalling());
+        if (!_healthController.isDead)
+        {
+            _animator.SetFloat("Speed", Mathf.Abs(_horizontalMove));
+            _animator.SetBool("IsJumping", _jump);
+            _animator.SetBool("IsFalling", IsFalling());
+        }
+        
+        _animator.SetBool("IsDead", _healthController.isDead);
     }
 
     private bool IsFalling()
     {
         return _rigidbody.velocity.y < -0.1;
-    }
-
-    private void ResetJump()
-    {
     }
 }
