@@ -40,4 +40,9 @@ public class UIHandler : MonoBehaviour
         }
 
     }
+
+    public void SetVolume(Single newVolume)
+    {
+        AudioManager.Instance.audioSource.volume = newVolume;
+    }
 }

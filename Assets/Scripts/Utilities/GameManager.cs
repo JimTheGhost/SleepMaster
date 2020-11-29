@@ -27,12 +27,14 @@ public class GameManager : MonoBehaviour
     [SerializeField]private GameObject playerPrefab;
 
     public UIHandler uiHandler;
+    public AudioManager audioManager;
 
     private void Awake()
     {
         _instance = this;
         DontDestroyOnLoad(this);
         SceneManager.sceneLoaded += SceneLoaded;
+        audioManager = AudioManager.Instance;
     }
 
     private void Update()
