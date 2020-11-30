@@ -7,36 +7,23 @@ using UnityEngine.Serialization;
 
 public class AudioManager : MonoBehaviour
 {
-    private static AudioManager _instance;
+    public static AudioManager Instance { get; private set; }
 
-    public static AudioManager Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                GameObject go = new GameObject("Audio Manager");
-                go.AddComponent<AudioManager>();
-            }
-            return _instance;
-        }
-    }
-
-    private AudioSource _sfxAudioSource; 
+    [SerializeField]private AudioSource _sfxAudioSource; 
     public AudioSource audioSource;
     [SerializeField]private AudioClip startClip;
     [SerializeField]private AudioClip loopClip;
     [SerializeField] private AudioClip testClip;
     private void Awake()
     {
-        if (_instance != null)
+        if (Instance != null)
         {
             Destroy(this);
             return;
         }
-        _instance = this;
+        Instance = this;
         DontDestroyOnLoad(this);
-        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
         audioSource.loop = true;
         if (_sfxAudioSource == null)
         {
